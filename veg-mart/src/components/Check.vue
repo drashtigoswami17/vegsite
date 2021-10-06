@@ -1,0 +1,301 @@
+<template>
+  <div>
+ <div class="sub_page">
+  <div class="hero_area">
+    <div class="hero_bg_box">
+      <img src="../assets/images/backimg.jpg" alt="">
+    </div>
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              VegMart
+            </span>
+          </a>
+          <div class="" id="">
+            <div class="container">
+              <div class=" mr-auto flex-column flex-lg-row align-items-center">
+                <ul class="navbar-nav justify-content-between ">
+                  <div class="User_option">
+                    <li class="">
+                      <a class="" href="">
+                        <i style="font-size:20px" class="fa fa-home" onClick="" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <form class="form-inline ">
+                      <button class="btn   nav_search-btn" type="submit">
+                        <i style="font-size:20px" class="fa fa-shopping-cart" aria-hidden="true"></i>
+                      </button>
+                    </form>
+                  </div>
+                </ul>
+              </div>
+            </div>
+
+            
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+</div>
+<div style="display:flex; justify-content: space-around; margin: 5%">
+<div class="CartContainer" >
+  <div class="Header">
+    <h3 class="Heading">Shopping Cart</h3>
+    <h5 class="Action">Remove all</h5>
+  </div>
+
+  <div class="Cart-Items">
+      <div class="image-box">
+        <img src="../assets/images/orange.jpg" style="height:120px"  />
+      </div>
+      <div class="about">
+        <h5 class="title">Orange</h5>
+        <br>
+        <h3 class="subtitle">1 kg</h3>
+        
+      </div>
+      <div class="counter">
+        <div class="btn">+</div>
+        <div class="count">2</div>
+        <div class="btn">-</div>
+      </div>
+      <div class="prices">
+        <div class="amount">10.00</div>
+        
+        <div class="remove"><u>Remove</u></div>
+      </div>
+  </div>
+
+  <div class="Cart-Items pad">
+      <div class="image-box">
+        <img src="../assets/images/p9.png" style="height:120px"  />
+      </div>
+      <div class="about">
+        <h5 class="title">Bottle Gourd</h5>
+        <br>
+        <h3 class="subtitle">2 kg</h3>
+        
+      </div>
+      <div class="counter">
+        <div class="btn">+</div>
+        <div class="count">1</div>
+        <div class="btn">-</div>
+      </div>
+      <div class="prices">
+        <div class="amount">20.00</div>
+        
+        <div class="remove"><u>Remove</u></div>
+      </div>
+  </div>
+<hr> 
+<div class="checkout">
+<div class="total">
+  <div>
+    <div class="Subtotal">Sub-Total</div>
+    <div class="items">2 items</div>
+  </div>
+  <div class="total-amount">30.00</div>
+</div>
+<button class="button">Checkout</button></div>
+</div>
+
+</div>
+
+</div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style scoped>
+body{
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.CartContainer{
+	width: 70%;
+	height: 90%;
+	background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px #1687d933;
+}
+
+.Header{
+	margin: auto;
+	width: 90%;
+	height: 15%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.Heading{
+	font-size: 20px;
+	font-family: 'Open Sans';
+	font-weight: 700;
+	color: #2F3841;
+}
+
+.Action{
+	font-size: 14px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #E44C4C;
+	cursor: pointer;
+	border-bottom: 1px solid #E44C4C;
+}
+
+.Cart-Items{
+	margin: auto;
+	width: 90%;
+	height: 30%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.image-box{
+	width: 15%;
+	text-align: center;
+}
+.about{
+	height: 100%;
+	width: 24%;
+}
+.title{
+	padding-top: 10px;
+	line-height: 10px;
+	font-size: 20px;
+	font-family: 'Open Sans';
+	font-weight: 800;
+	color: #202020;
+}
+.subtitle{
+	line-height: 10px;
+	font-size: 18px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #E44C4C;
+}
+
+.counter{
+	width: 15%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.btn{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #d9d9d9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	font-family: 'Open Sans';
+	font-weight: 900;
+	color: #202020;
+	cursor: pointer;
+}
+.count{
+	font-size: 20px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #202020;
+}
+
+.prices{
+	height: 100%;
+	text-align: right;
+}
+.amount{
+	padding-top: 20px;
+	font-size: 26px;
+	font-family: 'Open Sans';
+	font-weight: 800;
+	color: #202020;
+}
+.save{
+	padding-top: 5px;
+	font-size: 14px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #1687d9;
+	cursor: pointer;
+}
+.remove{
+	padding-top: 5px;
+	font-size: 14px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #E44C4C;
+	cursor: pointer;
+}
+
+.pad{
+	margin-top: 5px;
+}
+
+hr{
+	width: 66%;
+	float: right;
+	margin-right: 5%;
+}
+.checkout{
+	float: right;
+	margin-right: 5%;
+	width: 28%;
+}
+.total{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.Subtotal{
+	font-size: 22px;
+	font-family: 'Open Sans';
+	font-weight: 700;
+	color: #202020;
+}
+.items{
+	font-size: 16px;
+	font-family: 'Open Sans';
+	font-weight: 500;
+	color: #909090;
+	line-height: 10px;
+}
+.total-amount{
+	font-size: 36px;
+	font-family: 'Open Sans';
+	font-weight: 900;
+	color: #202020;
+}
+.button{
+	margin-top: 10px;
+	width: 100%;
+	height: 40px;
+	border: none;
+	background: linear-gradient(to bottom right, #10c910, #058817);
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 16px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #202020;
+}
+</style>
