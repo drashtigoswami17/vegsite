@@ -1,7 +1,6 @@
 <template>
-<div>  
-  
-    <div class="sub_page">
+  <div>
+ <div class="sub_page">
   <div class="hero_area">
     <div class="hero_bg_box">
       <img src="../assets/images/backimg.jpg" alt="">
@@ -25,9 +24,10 @@
                         <i style="font-size:20px" class="fa fa-home" onClick="" aria-hidden="true"></i>
                       </a>
                     </li>
-                    <form class="form-inline ">
+                   <form class="form-inline ">
                       <button class="btn   nav_search-btn" type="submit">
-                        <i style="font-size:20px" class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        <i style="font-size:20px"  class="fa fa-heart" aria-hidden="true"></i>
+
                       </button>
                     </form>
                   </div>
@@ -43,197 +43,61 @@
     <!-- end header section -->
   </div>
 
-</div> 
-
-<!--Section: Block Content-->
-<section>
-
-  <!-- Grid row -->
-  <div class="row">
-
-    <!-- Grid column -->
-    <div class="col-md-4 mb-5">
-
-      <!-- Card -->
-      <div class="">
-
-        <div class="view zoom overlay z-depth-2 rounded">
-          <img class="img-fluid w-100"
-            src="../assets/images/p9.png">
-          <a href="#!">
-            <div class="mask">
-              <img class="img-fluid w-100"
-                src="../assets/images/p9.png">
-              <div class="mask rgba-black-slight"></div>
-            </div>
-          </a>
-        </div>
-
-        <div class="text-center pt-4">
-
-          <h5>Blue denim shirt</h5>
-          <p class="mb-2 text-muted text-uppercase small">Shirts</p>
-          <ul class="rating">
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-          </ul>
-          <hr>
-          <h6 class="mb-3">20.00</h6>
-          <button type="button" class="btn btn-primary btn-sm mr-1 mb-2"><i
-              class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
-          <button type="button" class="btn btn-light btn-sm mr-1 mb-2"><i
-              class="fas fa-info-circle pr-2"></i>Details</button>
-          <button type="button" class="btn btn-elegant btn-sm px-3 mb-2 material-tooltip-main"
-            data-toggle="tooltip" data-placement="top" title="Remove from wishlist"><i
-              class="fas fa-times"></i></button>
-
-        </div>
-
-      </div>
-      <!-- Card -->
-
-    </div>
-    <!-- Grid column -->
-
-    <!-- Grid column -->
-    <div class="col-md-4 mb-5">
-
-      <!-- Card -->
-      <div class="">
-
-        <div class="view zoom overlay z-depth-2 rounded">
-          <img class="img-fluid w-100"
-            src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg" alt="Sample">
-          <a href="#!">
-            <div class="mask">
-              <img class="img-fluid w-100"
-                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg">
-              <div class="mask rgba-black-slight"></div>
-            </div>
-          </a>
-        </div>
-
-        <div class="text-center pt-4">
-
-          <h5>Red hoodie</h5>
-          <p class="mb-2 text-muted text-uppercase small">Hoodies</p>
-          <ul class="rating">
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="far fa-star fa-sm text-primary"></i>
-            </li>
-          </ul>
-          <hr>
-          <h6 class="mb-3">35.99 $</h6>
-          <button type="button" class="btn btn-primary btn-sm mr-1 mb-2"><i
-              class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
-          <button type="button" class="btn btn-light btn-sm mr-1 mb-2"><i
-              class="fas fa-info-circle pr-2"></i>Details</button>
-          <button type="button" class="btn btn-elegant btn-sm px-3 mb-2 material-tooltip-main"
-            data-toggle="tooltip" data-placement="top" title="Remove from wishlist"><i
-              class="fas fa-times"></i></button>
-
-        </div>
-
-      </div>
-      <!-- Card -->
-
-    </div>
-    <!-- Grid column -->
-
-    <!-- Grid column -->
-    <div class="col-md-4 mb-5">
-
-      <!-- Card -->
-      <div class="">
-
-        <div class="view zoom overlay z-depth-2 rounded">
-          <img class="img-fluid w-100"
-            src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14a.jpg" alt="Sample">
-          <h4 class="mb-0"><span class="badge badge-primary badge-pill badge-news">Sale</span></h4>
-          <a href="#!">
-            <div class="mask">
-              <img class="img-fluid w-100"
-                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg">
-              <div class="mask rgba-black-slight"></div>
-            </div>
-          </a>
-        </div>
-
-        <div class="text-center pt-4">
-
-          <h5>Grey sweater</h5>
-          <p class="mb-2 text-muted text-uppercase small">Sweaters</p>
-          <ul class="rating">
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fas fa-star fa-sm text-primary"></i>
-            </li>
-          </ul>
-          <hr>
-          <h6 class="mb-3">
-            <span class="text-danger mr-1">$21.99</span>
-            <span class="text-grey"><s>$36.99</s></span>
-          </h6>
-          <button type="button" class="btn btn-primary btn-sm mr-1 mb-2"><i
-              class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
-          <button type="button" class="btn btn-light btn-sm mr-1 mb-2"><i
-              class="fas fa-info-circle pr-2"></i>Details</button>
-          <button type="button" class="btn btn-elegant btn-sm px-3 mb-2 material-tooltip-main"
-            data-toggle="tooltip" data-placement="top" title="Remove from wishlist"><i
-              class="fas fa-times"></i></button>
-
-        </div>
-
-      </div>
-      <!-- Card -->
-
-    </div>
-    <!-- Grid column -->
-
+</div>
+<div style="display:flex; justify-content: space-around; margin: 5%">
+<div class="CartContainer" >
+  <div class="Header">
+    <h3 class="Heading">Your Wishlist</h3>
+    <h5 class="Action">Remove all</h5>
   </div>
-  <!-- Grid row -->
 
-</section>
-<!--Section: Block Content-->
+  <div class="Cart-Items">
+      <div class="image-box">
+        <img src="../assets/images/orange1.png" style="height:120px"  />
+      </div>
+      <div class="about">
+        <h5 class="title">Orange</h5>
+        <br>
+        
+        
+      </div>
+      <div class="counter">
+              </div>
+      <div class="prices">
+        
+        
+        <div class="remove"><u>Remove</u></div>
+      </div>
+  </div>
+
+  <div class="Cart-Items pad">
+      <div class="image-box">
+        <img src="../assets/images/p9.png" style="height:120px"  />
+      </div>
+      <div class="about">
+        <h5 class="title">Bottle Gourd</h5>
+        <br>
+        
+        
+      </div>
+      <div class="counter">
+        
+      </div>
+      <div class="prices">
+        
+        
+        <div class="remove"><u>Remove</u></div>
+      </div>
+  </div>
+<hr> 
+<div class="checkout">
+
+<button class="button">Checkout</button></div>
+</div>
 
 </div>
 
+</div>
 </template>
 
 <script>
@@ -243,35 +107,185 @@ export default {
 </script>
 
 <style scoped>
-.hero_area .hero_bg_box img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top right;
-     object-position: top right;
-     opacity:0.3;
-     
-     background-blend-mode: soft-light;
-    
-}
-.veg_section .box .img-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 275px;
-  padding: 25px;
-  background-color: #98FB98;
-  background-image:linear-gradient(rgb(148, 240, 209), rgb(235, 231, 234));
-  padding: 25px;
-  
-  border-radius: 5px;
+body{
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
+.CartContainer{
+	width: 70%;
+	height: 90%;
+	background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px #1687d933;
+}
+
+.Header{
+	margin: auto;
+	width: 90%;
+	height: 15%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.Heading{
+	font-size: 20px;
+	font-family: 'Open Sans';
+	font-weight: 700;
+	color: #2F3841;
+}
+
+.Action{
+	font-size: 14px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #E44C4C;
+	cursor: pointer;
+	border-bottom: 1px solid #E44C4C;
+}
+
+.Cart-Items{
+	margin: auto;
+	width: 90%;
+	height: 30%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.image-box{
+	width: 15%;
+	text-align: center;
+}
+.about{
+	height: 100%;
+	width: 24%;
+}
+.title{
+	padding-top: 10px;
+	line-height: 10px;
+	font-size: 20px;
+	font-family: 'Open Sans';
+	font-weight: 800;
+	color: #202020;
+}
+.subtitle{
+	line-height: 10px;
+	font-size: 18px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #E44C4C;
+}
+
+.counter{
+	width: 15%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.btn{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #d9d9d9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	font-family: 'Open Sans';
+	font-weight: 900;
+	color: #202020;
+	cursor: pointer;
+}
+.count{
+	font-size: 20px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #202020;
+}
+
+.prices{
+	height: 100%;
+	text-align: right;
+}
+.amount{
+	padding-top: 20px;
+	font-size: 26px;
+	font-family: 'Open Sans';
+	font-weight: 800;
+	color: #202020;
+}
+.save{
+	padding-top: 5px;
+	font-size: 14px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #1687d9;
+	cursor: pointer;
+}
+.remove{
+	padding-top: 5px;
+	font-size: 14px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #E44C4C;
+	cursor: pointer;
+}
+
+.pad{
+	margin-top: 5px;
+}
+
+hr{
+	width: 66%;
+	float: right;
+	margin-right: 5%;
+}
+.checkout{
+	float: right;
+	margin-right: 5%;
+	width: 28%;
+}
+.total{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.Subtotal{
+	font-size: 22px;
+	font-family: 'Open Sans';
+	font-weight: 700;
+	color: #202020;
+}
+.items{
+	font-size: 16px;
+	font-family: 'Open Sans';
+	font-weight: 500;
+	color: #909090;
+	line-height: 10px;
+}
+.total-amount{
+	font-size: 36px;
+	font-family: 'Open Sans';
+	font-weight: 900;
+	color: #202020;
+}
+.button{
+	margin-top: 10px;
+	width: 100%;
+	height: 40px;
+	border: none;
+	background: linear-gradient(to bottom right, #10c910, #058817);
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 16px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #202020;
+}
 </style>

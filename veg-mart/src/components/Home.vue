@@ -19,38 +19,43 @@
                 <ul class="navbar-nav justify-content-between ">
                   <div class="User_option">
                     <li class="">
+                      <router-link to="/login">
                       <a class="" href="">
                         <i style="font-size:20px" class="fa fa-user" onClick="" aria-hidden="true"></i>
                       </a>
+                      </router-link>
                     </li>
                     <li class="">
+                      <router-link to="/cart">
                       <a class="" href="">
                         &nbsp; &nbsp; &nbsp; &nbsp;<i style="font-size:20px" class="fa fa-shopping-cart" aria-hidden="true"></i>
                       </a>
+                      </router-link>
                     </li>
-                    
+                    <li class="">
+                      <router-link to="/sign">
+                      <a class="" href="">
+                        &nbsp; &nbsp; &nbsp; &nbsp;<i style="font-size:20px" class="fa fa-heart" aria-hidden="true"></i>
+                      </a>
+                      </router-link>
+                    </li>
+                    <div class="header">
+  
+                      <div class="header-right">
+                        <a class="active" href="#fruit">Fruits</a>
+                        &nbsp; &nbsp;&nbsp; &nbsp;<a href="#veg">Vegitables</a>
+                        &nbsp; &nbsp;<a href="#contact">Contact Us</a>
+                      </div>
+                    </div> 
+                                          
+                     
+
                   </div>
                 </ul>
               </div>
             </div>
 
-            <div class="custom_menu-btn">
-              <button onclick="openNav()">
-                <span class="s-1"> </span>
-                <span class="s-2"> </span>
-                <span class="s-3"> </span>
-              </button>
-            </div>
-            <div id="myNav" class="overlay">
-              <div class="overlay-content">
-                <a href="index.html">HOME</a>
-                <a href="">ABOUT</a>
-                <a href="#veg">VEGETABLES</a>
-                <a href="#fruit">FRUITS</a>
-                <a href="#contact">CONTACT US</a>
-              </div>
-            </div>
-          </div>
+                      </div>
         </nav>
       </div>
     </header>
@@ -322,7 +327,7 @@
         <div class="col-md-6 col-lg-4">
           <div class="box">
             <div class="img-box">
-              <img src="../assets/images/apple.png" alt="">
+              <img src="../assets/images/apple1.png" alt="">
             </div>
             <div class="detail-box">
               <a href="">
@@ -344,7 +349,7 @@
         <div class="col-md-6 col-lg-4">
           <div class="box">
             <div class="img-box">
-              <img src="../assets/images/banana.png" alt="">
+              <img src="../assets/images/banana1.png" alt="">
             </div>
             <div class="detail-box">
               <a href="">
@@ -365,7 +370,7 @@
         <div class="col-md-6 col-lg-4">
           <div class="box">
             <div class="img-box">
-              <img src="../assets/images/mango.jpg" alt="">
+              <img src="../assets/images/mango1.png" alt="">
             </div>
             <div class="detail-box">
               <a href="">
@@ -386,7 +391,7 @@
         <div class="col-md-6 col-lg-4">
           <div class="box">
             <div class="img-box">
-              <img src="../assets/images/grapes.jpg" alt="">
+              <img src="../assets/images/grapes.png" alt="">
             </div>
             <div class="detail-box">
               <a href="">
@@ -407,7 +412,7 @@
         <div class="col-md-6 col-lg-4">
           <div class="box">
             <div class="img-box">
-              <img src="../assets/images/strawberry.png" alt="">
+              <img src="../assets/images/straw.png" alt="">
             </div>
             <div class="detail-box">
               <a href="">
@@ -428,7 +433,7 @@
         <div class="col-md-6 col-lg-4">
           <div class="box">
             <div class="img-box">
-              <img src="../assets/images/cherry.jpg" alt="">
+              <img src="../assets/images/cherry.png" alt="">
             </div>
             <div class="detail-box">
               <a href="">
@@ -449,7 +454,7 @@
         <div class="col-md-6 col-lg-4">
           <div class="box">
             <div class="img-box">
-              <img src="../assets/images/orange.jpg" alt="">
+              <img src="../assets/images/orange1.png" alt="">
             </div>
             <div class="detail-box">
               <a href="">
@@ -470,11 +475,11 @@
         <div class="col-md-6 col-lg-4">
           <div class="box">
             <div class="img-box">
-              <img src="../assets/images/watermalon.jpg" alt="">
+              <img src="../assets/images/watermalon1.png" alt="">
             </div>
             <div class="detail-box">
               <a href="">
-                Watermalon
+                Watermalon 
               </a>
               <div class="price_box">
                 <h6 class="price_heading">
@@ -491,7 +496,7 @@
         <div class="col-md-6 col-lg-4">
           <div class="box">
             <div class="img-box">
-              <img src="../assets/images/kiwi.jpg" alt="">
+              <img src="../assets/images/kiwi1.png" alt="">
             </div>
             <div class="detail-box">
               <a href="">
@@ -610,11 +615,70 @@
 </template>
 
 <script>
+import * as fb from '../firebase.js'
 export default {
-
+mounted(){
+  fb.user.doc('9106942548').get().then(d=>{
+    console.log(d);
+  })
+}
 }
 </script>
 
-<style>
+<style scoped>
+.header {
+  overflow: hidden;
+  
+  padding: 10px 10px;
+}
+
+/* Style the header links */
+.header a {
+  float: right;
+  color: rgb(231, 221, 221);
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+  font-weight:bold;
+  
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* Change the background color on mouse-over */
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the active/current link*/
+.header a.active {
+  
+  
+}
+
+/* Float the link section to the right */
+.header-right {
+  float:right;
+}
+
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
+  }
+}
 
 </style>

@@ -1,5 +1,28 @@
 <template>
-  <div style="display:flex; justify-content: space-around; margin: 10%">
+  <div class="sub_page">
+    <div class="hero_area">
+      <div class="hero_bg_box">
+        <img src="../assets/images/backimg.jpg" alt="">
+      </div>
+      <!-- header section strats -->
+      <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="index.html">
+              <span>
+                VegMart
+              </span>
+            </a>
+            <div class="" id="">
+                            
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- end header section -->
+    </div>
+</div>  
+  <div style="display:flex; justify-content: space-around; margin: 4%;">
      
       <div class="container" style="alignment:center">
     <input type="checkbox" id="flip">
@@ -27,44 +50,25 @@
           <form action="#">
             <div class="input-boxes">
               <div class="input-box">
-                <i class="fas fa-envelope"></i>
+                
                 <input type="text" placeholder="Enter your mobile number" required>
               </div>
+              <div class="button input-box">
+                <input type="submit" value="Send OTP">
+              </div>
               <div class="input-box">
-                <i class="fas fa-lock"></i>
+                
                 <input type="password" placeholder="Enter your OTP" required>
               </div>
               
               <div class="button input-box">
-                <input type="submit" value="LOGIN">
+                <input type="submit" value="Verify OTP">
               </div>
-              <div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label></div>
+              
             </div>
         </form>
       </div>
-        <div class="signup-form">
-          <div class="title">Signup</div>
-        <form action="#">
-            <div class="input-boxes">
-              <div class="input-box">
-                <i class="fas fa-user"></i>
-                <input type="text" placeholder="Enter your name" required>
-              </div>
-              <div class="input-box">
-                <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Enter your email" required>
-              </div>
-              <div class="input-box">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password" required>
-              </div>
-              <div class="button input-box">
-                <input type="submit" value="Sumbit">
-              </div>
-              <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
-            </div>
-      </form>
-    </div>
+        
     </div>
     </div>
   </div>
@@ -106,7 +110,7 @@ body{
 .container .cover{
   position: absolute;
   top: 0;
-  left: 50%;
+  left: 25%;
   height: 100%;
   width: 50%;
   z-index: 98;
@@ -154,6 +158,7 @@ body{
   height: 100%;
   width: 100%;
   display: flex;
+  left:50%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -194,7 +199,7 @@ body{
   position: relative;
   font-size: 24px;
   font-weight: 500;
-  color: #333;
+  
 }
 .forms .form-content .title:before{
   content: '';
@@ -217,6 +222,7 @@ body{
   height: 50px;
   width: 100%;
   margin: 10px 0;
+
   position: relative;
 }
 .form-content .input-box input{
@@ -227,6 +233,7 @@ body{
   padding: 0 30px;
   font-size: 16px;
   font-weight: 500;
+  
   border-bottom: 2px solid rgba(0,0,0,0.2);
   transition: all 0.3s ease;
 }
