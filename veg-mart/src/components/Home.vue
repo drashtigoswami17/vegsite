@@ -610,17 +610,43 @@
               </div>
       
     </div>
+    {{veg}}
   </section>
       </div>
 </template>
 
 <script>
-import * as fb from '../firebase.js'
+
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore'
 export default {
 mounted(){
-  fb.user.doc('9106942548').get().then(d=>{
-    console.log(d);
-  })
+ firebase.initializeApp( {
+  apiKey: "AIzaSyDn7efC-m69rn1jevcOIRw6-cIJITcacak",
+  authDomain: "vegmart-c4605.firebaseapp.com",
+  databaseURL: "https://vegmart-c4605-default-rtdb.firebaseio.com",
+  projectId: "vegmart-c4605",
+  storageBucket: "vegmart-c4605.appspot.com",
+  messagingSenderId: "402249625272",
+  appId: "1:402249625272:web:1dd85811f72e821e484e4d"
+});
+this.getD()
+},
+data(){
+  return{
+    veg:{},
+  }
+},
+methods:{
+  getD()
+  {
+    firebase.firestore().collection('product').get().then(d=>{
+    d.forEach((doc)=>{
+    
+      this.veg[doc.id]=doc.data();
+    })
+});
+  }
 }
 }
 </script>

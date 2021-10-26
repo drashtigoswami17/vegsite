@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-import 'firebase/firestore';
-import firebase from "firebase";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -16,9 +16,7 @@ firebase.initializeApp( {
 })
 
 // Initialize Firebase
-const db = firebase.firestore()
-const user = db.collection('user')
+firebase.firestore().collection('user').doc('9106942548').get().then(d=>{
+    console.log(d.data());
+});
 
-export{
-    user
-}
