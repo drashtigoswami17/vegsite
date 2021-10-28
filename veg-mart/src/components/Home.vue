@@ -118,6 +118,33 @@
         
       </div>
       <div class="row">
+        <div v-for="v,i in veg" :key=i class="col-md-6 col-lg-4">
+          <div class="box" v-if='v.stock!=0'>
+            <div class="img-box">
+
+             <img :src= "getImgUrl(src)" :alt="v.img">
+                         </div>
+            <div class="detail-box">
+              <a href="">
+                {{v.name}}
+              
+              </a>
+              <div class="price_box">
+                <h6 class="price_heading">
+                  <span>RS</span> {{v.price}}/-
+                  <br>
+                  <br> 
+                  <i style="font-size:20px" class="fa fa-shopping-cart" aria-hidden="true"></i>
+                  &nbsp;<i class="fa fa-heart" aria-hidden="true"></i>
+                </h6>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="row">
         <div class="col-md-6 col-lg-4">
           <div class="box">
             <div class="img-box">
@@ -308,7 +335,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
      
   </section>
@@ -323,7 +350,32 @@
         </h2>
         
       </div>
-      <div class="row">
+       <div class="row">
+        <div v-for="v,i in fruit" :key=i class="col-md-6 col-lg-4">
+          <div class="box" v-if='v.stock!=0'>
+            <div class="img-box">
+              <img :src="v.img" :alt="v.img"/>
+            </div>
+            <div class="detail-box">
+              <a href="">
+                {{v.name}}
+              
+              </a>
+              <div class="price_box">
+                <h6 class="price_heading">
+                  <span>RS</span> {{v.price}}
+                  <br>
+                  <br> 
+                  <i style="font-size:20px" class="fa fa-shopping-cart" aria-hidden="true"></i>
+                  &nbsp;<i class="fa fa-heart" aria-hidden="true"></i>
+                </h6>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
         <div class="col-md-6 col-lg-4">
           <div class="box">
             <div class="img-box">
@@ -514,7 +566,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 
@@ -610,7 +662,7 @@
               </div>
       
     </div>
-    {{veg}}
+  
   </section>
       </div>
 </template>
@@ -635,18 +687,30 @@ this.getD()
 data(){
   return{
     veg:{},
+    fruit:{}
   }
 },
 methods:{
   getD()
   {
-    firebase.firestore().collection('product').get().then(d=>{
+    firebase.firestore().collection('product').where('cat','==','veg').get().then(d=>{
     d.forEach((doc)=>{
     
       this.veg[doc.id]=doc.data();
     })
 });
+   firebase.firestore().collection('product').where('cat','==','fruit').get().then(d=>{
+    d.forEach((doc)=>{
+    
+      this.fruit[doc.id]=doc.data();
+    })
+});
   }
+},
+getImgUrl(this)
+{
+  
+  return require(this.img)
 }
 }
 </script>
