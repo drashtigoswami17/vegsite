@@ -17,7 +17,7 @@
             <div class="container">
               <div class=" mr-auto flex-column flex-lg-row align-items-center">
                 <ul class="navbar-nav justify-content-between ">
-                  <div class="User_option">
+                   <div class="User_option">
                     <li class="">
                       <router-link to="/login">
                       <a class="" href="">
@@ -39,13 +39,25 @@
                       </a>
                       </router-link>
                     </li>
+                    <li class="">
+                      <router-link to="/sign">
+                      <a class="" href="">
+                       <router-link to="/register">
+                        
+                        &nbsp; &nbsp; &nbsp; &nbsp;<i style="font-size:20px" class="fa fa-registered" aria-hidden="true"></i>
+                        </router-link>
+
+ 
+                      </a>
+                      </router-link>
+                    </li>
                     <div class="header">
   
                       <div class="header-right">
                         <a class="active" href="#fruit">Fruits</a>
                         &nbsp; &nbsp;&nbsp; &nbsp;<a href="#veg">Vegitables</a>
                         &nbsp; &nbsp;<a href="#contact">Contact Us</a>
-                      </div>
+                                              </div>
                     </div> 
                                           
                      
@@ -120,9 +132,10 @@
       <div class="row">
         <div v-for="v,i in veg" :key=i class="col-md-6 col-lg-4">
           <div class="box" v-if='v.stock!=0'>
+            
             <div class="img-box">
 
-             <img :src= "getImgUrl(src)" :alt="v.img">
+             <img v-bind:src="getImgUrl(v.img)" width="150" height="150" :alt="v.img"/>
                          </div>
             <div class="detail-box">
               <a href="">
@@ -354,7 +367,7 @@
         <div v-for="v,i in fruit" :key=i class="col-md-6 col-lg-4">
           <div class="box" v-if='v.stock!=0'>
             <div class="img-box">
-              <img :src="v.img" :alt="v.img"/>
+              <img v-bind:src="getImgUrl(v.img)" :alt="v.img"/>
             </div>
             <div class="detail-box">
               <a href="">
@@ -363,11 +376,11 @@
               </a>
               <div class="price_box">
                 <h6 class="price_heading">
-                  <span>RS</span> {{v.price}}
+                  <span>RS</span> {{v.price}}/-
                   <br>
                   <br> 
                   <i style="font-size:20px" class="fa fa-shopping-cart" aria-hidden="true"></i>
-                  &nbsp;<i class="fa fa-heart" aria-hidden="true"></i>
+                  &nbsp;<i class="fa fa-heart" style="color:red" aria-hidden="true"></i>
                 </h6>
               </div>
             </div>
@@ -662,7 +675,8 @@
               </div>
       
     </div>
-  
+  {{wish}}
+  {{cart}}
   </section>
       </div>
 </template>
@@ -671,7 +685,8 @@
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore'
-export default {
+export default 
+{
 mounted(){
  firebase.initializeApp( {
   apiKey: "AIzaSyDn7efC-m69rn1jevcOIRw6-cIJITcacak",
@@ -682,12 +697,19 @@ mounted(){
   messagingSenderId: "402249625272",
   appId: "1:402249625272:web:1dd85811f72e821e484e4d"
 });
-this.getD()
+firebase.firestore().collection('user').doc('9106942548').get().then(d=>{
+  this.cart = d.data().cart
+  this.wish = d.data().wishlist
+})
+this.getD();
+
 },
 data(){
   return{
     veg:{},
-    fruit:{}
+    fruit:{},
+    wish:[],
+    cart:{}
   }
 },
 methods:{
@@ -695,23 +717,23 @@ methods:{
   {
     firebase.firestore().collection('product').where('cat','==','veg').get().then(d=>{
     d.forEach((doc)=>{
-    
-      this.veg[doc.id]=doc.data();
+      if(doc.data().stock!=='0'){
+      this.veg[doc.id]=doc.data();}
     })
 });
    firebase.firestore().collection('product').where('cat','==','fruit').get().then(d=>{
     d.forEach((doc)=>{
-    
-      this.fruit[doc.id]=doc.data();
+      if(doc.data().stock!=='0'){
+      this.fruit[doc.id]=doc.data();}
     })
 });
-  }
-},
-getImgUrl(this)
+  },
+  getImgUrl(img)
 {
-  
-  return require(this.img)
+  return require('../assets/images/'+img)
 }
+},
+
 }
 </script>
 
