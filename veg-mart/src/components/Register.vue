@@ -42,7 +42,6 @@
             <div class="gender-details">
           <input type="radio" name="gender" id="dot-1">
           <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
           <div style="display:flex; justify-content: space-around;">
           <span class="gender-title">Gender</span>
           </div>
@@ -64,11 +63,19 @@
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
-            <input type="text" placeholder="Enter your number" required>
+            <input type="text" inputmode="numeric" maxlength="10" placeholder="Enter your number" required>
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" placeholder="Enter your email" required>
+            <input type="email" placeholder="Enter your email" required>
+          </div>
+           <div class="input-box">
+            <span class="details">PIN</span>
+            <input type="password" inputmode="numeric" maxlength="6" placeholder="******" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm PIN</span>
+            <input type="password" inputmode="numeric" maxlength="6" placeholder="******" required>
           </div>
 
               <div class="input-box">

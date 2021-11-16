@@ -1,301 +1,390 @@
 <template>
   <div>
- <div class="sub_page">
-  <div class="hero_area">
-    <div class="hero_bg_box">
-      <img src="../assets/images/backimg.jpg" alt="">
-    </div>
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container">
-          <a class="navbar-brand" href="index.html">
-            <span>
-              VegMart
-            </span>
-          </a>
-          <div class="" id="">
-            <div class="container">
-              <div class=" mr-auto flex-column flex-lg-row align-items-center">
-                <ul class="navbar-nav justify-content-between ">
-                  <div class="User_option">
-                    <li class="">
-                      <a class="" href="">
-                        <i style="font-size:20px" class="fa fa-home" onClick="" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <form class="form-inline ">
-                      <button class="btn   nav_search-btn" type="submit">
-                        <i style="font-size:20px" class="fa fa-shopping-cart" aria-hidden="true"></i>
-                      </button>
-                    </form>
+    <div class="sub_page">
+      <div class="hero_area">
+        <div class="hero_bg_box">
+          <img src="../assets/images/backimg.jpg" alt="" />
+        </div>
+        <!-- header section strats -->
+        <header class="header_section">
+          <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+              <a class="navbar-brand" href="index.html">
+                <span> VegMart </span>
+              </a>
+              <div class="" id="">
+                <div class="container">
+                  <div
+                    class="mr-auto flex-column flex-lg-row align-items-center"
+                  >
+                    <ul class="navbar-nav justify-content-between">
+                      <div class="User_option">
+                        <li class="">
+                          <a class="" href="">
+                            <i
+                              style="font-size: 20px"
+                              class="fa fa-home"
+                              onClick=""
+                              aria-hidden="true"
+                            ></i>
+                          </a>
+                        </li>
+                        <form class="form-inline">
+                          <button class="btn nav_search-btn" type="submit">
+                            <i
+                              style="font-size: 20px"
+                              class="fa fa-shopping-cart"
+                              aria-hidden="true"
+                            ></i>
+                          </button>
+                        </form>
+                      </div>
+                    </ul>
                   </div>
-                </ul>
+                </div>
               </div>
-            </div>
-
-            
+            </nav>
           </div>
-        </nav>
+        </header>
+        <!-- end header section -->
       </div>
-    </header>
-    <!-- end header section -->
-  </div>
+    </div>
+    <div style="display: flex; justify-content: space-around; margin: 5%">
+      <div class="CartContainer">
+        <div class="Header">
+          <h3 class="Heading">Shopping Cart</h3>
+          <h5 class="Action">Remove all</h5>
+        </div>
 
-</div>
-<div style="display:flex; justify-content: space-around; margin: 5%">
-<div class="CartContainer" >
-  <div class="Header">
-    <h3 class="Heading">Shopping Cart</h3>
-    <h5 class="Action">Remove all</h5>
-  </div>
+        <div class="Cart-Items" v-for="p, i in prod" :key="i">
+          <div class="image-box">
+            <img v-bind:src="getImgUrl(p.img)" :alt="p.img" height="120" />
+          </div>
+          <div class="about">
+            <h5 class="title">{{ p.name }}</h5>
+            <br />
+          </div>
+          <div class="counter">
+            <div class="btn" @click="updateQty(i, '-')">-</div>
+            <div class="count">{{ cart[i] }}</div>
+            <div class="btn" @click="updateQty(i, '+')">+</div>
+          </div>
+          <div class="prices">
+            <div class="amount">{{ p.price * cart[i] }}</div>
 
-  <div class="Cart-Items">
-      <div class="image-box">
-        <img src="../assets/images/orange.jpg" style="height:120px"  />
-      </div>
-      <div class="about">
-        <h5 class="title">Orange</h5>
-        <br>
-        <h3 class="subtitle">1 kg</h3>
-        
-      </div>
-      <div class="counter">
-        <div class="btn">+</div>
-        <div class="count">2</div>
-        <div class="btn">-</div>
-      </div>
-      <div class="prices">
-        <div class="amount">10.00</div>
-        
-        <div class="remove"><u>Remove</u></div>
-      </div>
-  </div>
+            <div class="remove"><u @click="del(i, '')">Remove</u></div>
+          </div>
+        </div>
 
-  <div class="Cart-Items pad">
-      <div class="image-box">
-        <img src="../assets/images/p9.png" style="height:120px"  />
+        <hr />
+        <div class="checkout">
+          <div class="total">
+            <div>
+              <div class="Subtotal">Total</div>
+            </div>
+            <div class="total-amount">{{ ttl }}</div>
+          </div>
+          <button class="button" @click="placeOrder()">Place Order</button>
+        </div>
       </div>
-      <div class="about">
-        <h5 class="title">Bottle Gourd</h5>
-        <br>
-        <h3 class="subtitle">2 kg</h3>
-        
-      </div>
-      <div class="counter">
-        <div class="btn">+</div>
-        <div class="count">1</div>
-        <div class="btn">-</div>
-      </div>
-      <div class="prices">
-        <div class="amount">20.00</div>
-        
-        <div class="remove"><u>Remove</u></div>
-      </div>
+    </div>
   </div>
-<hr> 
-<div class="checkout">
-<div class="total">
-  <div>
-    <div class="Subtotal">Sub-Total</div>
-    <div class="items">2 items</div>
-  </div>
-  <div class="total-amount">30.00</div>
-</div>
-<button class="button">Checkout</button></div>
-</div>
-
-</div>
-
-</div>
 </template>
 
 <script>
-export default {
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
-}
+export default {
+  data() {
+    return {
+      cart: {},
+      prod: {},
+      ttl: 0,
+    };
+  },
+  mounted() {
+    firebase.initializeApp({
+      apiKey: "AIzaSyDn7efC-m69rn1jevcOIRw6-cIJITcacak",
+      authDomain: "vegmart-c4605.firebaseapp.com",
+      databaseURL: "https://vegmart-c4605-default-rtdb.firebaseio.com",
+      projectId: "vegmart-c4605",
+      storageBucket: "vegmart-c4605.appspot.com",
+      messagingSenderId: "402249625272",
+      appId: "1:402249625272:web:1dd85811f72e821e484e4d",
+    });
+    this.getCart();
+  },
+  methods: {
+    placeOrder(){
+      var item = {}
+      const k = Object.keys(this.cart)
+      k.forEach(i=>{
+        item[i]=this.cart[i]+'*'+this.prod[i].price
+      })
+      firebase.firestore().collection('order').doc('od'+ window.performance.timing.navigationStart + window.performance.now()).set({
+        'date':new Date(),
+        'price':this.ttl,
+        'user':window.localStorage.getItem('vgUser'),
+        'status':'place',
+        'item':item
+      }).then(()=>{
+        this.del(null,'all')
+      })
+    },
+    getImgUrl(img) {
+      return require("../assets/images/" + img);
+    },
+    del(id, mode) {
+      if (mode === "all") {
+        this.cart = {};
+      } else {
+        delete this.cart[id];
+        delete this.prod[id];
+      }
+      firebase
+        .firestore()
+        .collection("user")
+        .doc(window.localStorage.getItem("vgUser"))
+        .update({
+          cart: this.cart,
+        })
+        .then(() => {
+          location.reload();
+        });
+    },
+    updateQty(id, op) {
+      if (op === "+") {
+        if (parseInt(this.cart[id]) < 4) {
+          this.cart[id]++;
+        }
+      } else {
+        if (parseInt(this.cart[id])) {
+          this.cart[id]--;
+          if (!parseInt(this.cart[id])) {
+            this.del(id, "");
+          }
+        }
+      }
+      firebase
+        .firestore()
+        .collection("user")
+        .doc(window.localStorage.getItem("vgUser"))
+        .update({
+          cart: this.cart,
+        });
+      const k = Object.keys(this.cart);
+      this.ttl = 0;
+      k.forEach((i) => {
+        this.ttl = this.ttl + this.cart[i] * this.prod[i].price;
+      });
+    },
+    getCart() {
+      firebase
+        .firestore()
+        .collection("user")
+        .doc(window.localStorage.getItem("vgUser"))
+        .get()
+        .then((d) => {
+          this.cart = d.data().cart;
+          const key = Object.keys(this.cart);
+          key.forEach((k) => {
+            firebase
+              .firestore()
+              .collection("product")
+              .doc(k)
+              .get()
+              .then((d) => {
+                this.prod[k] = d.data();
+                this.ttl = this.ttl + this.cart[k] * d.data().price;
+              });
+          });
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
-body{
-	margin: 0;
-	padding: 0;
-	background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom right, #e3f0ff, #fafcff);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.CartContainer{
-	width: 70%;
-	height: 90%;
-	background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0px 10px 20px #1687d933;
+.CartContainer {
+  width: 70%;
+  height: 90%;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0px 10px 20px #1687d933;
 }
 
-.Header{
-	margin: auto;
-	width: 90%;
-	height: 15%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+.Header {
+  margin: auto;
+  width: 90%;
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.Heading{
-	font-size: 20px;
-	font-family: 'Open Sans';
-	font-weight: 700;
-	color: #2F3841;
+.Heading {
+  font-size: 20px;
+  font-family: "Open Sans";
+  font-weight: 700;
+  color: #2f3841;
 }
 
-.Action{
-	font-size: 14px;
-	font-family: 'Open Sans';
-	font-weight: 600;
-	color: #E44C4C;
-	cursor: pointer;
-	border-bottom: 1px solid #E44C4C;
+.Action {
+  font-size: 14px;
+  font-family: "Open Sans";
+  font-weight: 600;
+  color: #e44c4c;
+  cursor: pointer;
+  border-bottom: 1px solid #e44c4c;
 }
 
-.Cart-Items{
-	margin: auto;
-	width: 90%;
-	height: 30%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+.Cart-Items {
+  margin: auto;
+  width: 90%;
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.image-box{
-	width: 15%;
-	text-align: center;
+.image-box {
+  width: 15%;
+  text-align: center;
 }
-.about{
-	height: 100%;
-	width: 24%;
+.about {
+  height: 100%;
+  width: 24%;
 }
-.title{
-	padding-top: 10px;
-	line-height: 10px;
-	font-size: 20px;
-	font-family: 'Open Sans';
-	font-weight: 800;
-	color: #202020;
+.title {
+  padding-top: 10px;
+  line-height: 10px;
+  font-size: 20px;
+  font-family: "Open Sans";
+  font-weight: 800;
+  color: #202020;
 }
-.subtitle{
-	line-height: 10px;
-	font-size: 18px;
-	font-family: 'Open Sans';
-	font-weight: 600;
-	color: #E44C4C;
-}
-
-.counter{
-	width: 15%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.btn{
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	background-color: #d9d9d9;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 20px;
-	font-family: 'Open Sans';
-	font-weight: 900;
-	color: #202020;
-	cursor: pointer;
-}
-.count{
-	font-size: 20px;
-	font-family: 'Open Sans';
-	font-weight: 600;
-	color: #202020;
+.subtitle {
+  line-height: 10px;
+  font-size: 18px;
+  font-family: "Open Sans";
+  font-weight: 600;
+  color: #e44c4c;
 }
 
-.prices{
-	height: 100%;
-	text-align: right;
+.counter {
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.amount{
-	padding-top: 20px;
-	font-size: 26px;
-	font-family: 'Open Sans';
-	font-weight: 800;
-	color: #202020;
+.btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-family: "Open Sans";
+  font-weight: 900;
+  color: #202020;
+  cursor: pointer;
 }
-.save{
-	padding-top: 5px;
-	font-size: 14px;
-	font-family: 'Open Sans';
-	font-weight: 600;
-	color: #1687d9;
-	cursor: pointer;
-}
-.remove{
-	padding-top: 5px;
-	font-size: 14px;
-	font-family: 'Open Sans';
-	font-weight: 600;
-	color: #E44C4C;
-	cursor: pointer;
-}
-
-.pad{
-	margin-top: 5px;
+.count {
+  font-size: 20px;
+  font-family: "Open Sans";
+  font-weight: 600;
+  color: #202020;
 }
 
-hr{
-	width: 66%;
-	float: right;
-	margin-right: 5%;
+.prices {
+  height: 100%;
+  text-align: right;
 }
-.checkout{
-	float: right;
-	margin-right: 5%;
-	width: 28%;
+.amount {
+  padding-top: 20px;
+  font-size: 26px;
+  font-family: "Open Sans";
+  font-weight: 800;
+  color: #202020;
 }
-.total{
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
+.save {
+  padding-top: 5px;
+  font-size: 14px;
+  font-family: "Open Sans";
+  font-weight: 600;
+  color: #1687d9;
+  cursor: pointer;
 }
-.Subtotal{
-	font-size: 22px;
-	font-family: 'Open Sans';
-	font-weight: 700;
-	color: #202020;
+.remove {
+  padding-top: 5px;
+  font-size: 14px;
+  font-family: "Open Sans";
+  font-weight: 600;
+  color: #e44c4c;
+  cursor: pointer;
 }
-.items{
-	font-size: 16px;
-	font-family: 'Open Sans';
-	font-weight: 500;
-	color: #909090;
-	line-height: 10px;
+
+.pad {
+  margin-top: 5px;
 }
-.total-amount{
-	font-size: 36px;
-	font-family: 'Open Sans';
-	font-weight: 900;
-	color: #202020;
+
+hr {
+  width: 66%;
+  float: right;
+  margin-right: 5%;
 }
-.button{
-	margin-top: 10px;
-	width: 100%;
-	height: 40px;
-	border: none;
-	background: linear-gradient(to bottom right, #10c910, #058817);
-	border-radius: 20px;
-	cursor: pointer;
-	font-size: 16px;
-	font-family: 'Open Sans';
-	font-weight: 600;
-	color: #202020;
+.checkout {
+  float: right;
+  margin-right: 5%;
+  width: 28%;
+}
+.total {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.Subtotal {
+  font-size: 22px;
+  font-family: "Open Sans";
+  font-weight: 700;
+  color: #202020;
+}
+.items {
+  font-size: 16px;
+  font-family: "Open Sans";
+  font-weight: 500;
+  color: #909090;
+  line-height: 10px;
+}
+.total-amount {
+  font-size: 36px;
+  font-family: "Open Sans";
+  font-weight: 900;
+  color: #202020;
+}
+.button {
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  border: none;
+  background: linear-gradient(to bottom right, #10c910, #058817);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Open Sans";
+  font-weight: 600;
+  color: #202020;
 }
 </style>

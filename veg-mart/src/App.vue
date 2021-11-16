@@ -8,8 +8,8 @@
 <script>
 export default {
   mounted(){
-    this.$router.push('/')
-  }
+    window.localStorage.setItem('vgUser','9106942548')
+    }
 }
 </script>
 <style>
