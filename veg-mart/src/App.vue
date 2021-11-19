@@ -8,7 +8,8 @@
 <script>
 export default {
   mounted(){
-    window.localStorage.setItem('vgUser','9106942548')
+    /*window.localStorage.setItem('vgUser','9106942548')*/
+    ('/profile')
     }
 }
 </script>

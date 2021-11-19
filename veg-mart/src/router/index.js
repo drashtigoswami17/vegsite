@@ -5,6 +5,7 @@ import Cart from '../components/Cart.vue'
 import Otp from '../components/Otp.vue'
 import Register from '../components/Register.vue'
 import Sign from '../components/Sign.vue'
+import Profile from '../components/Profile.vue'
 const routes = [
   {
     path: '/',
@@ -31,6 +32,11 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   },
  
 ]
