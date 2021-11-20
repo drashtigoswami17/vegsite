@@ -26,17 +26,17 @@
 
 <div style="display:flex; justify-content: space-around; margin: 2%;">
 <div class="container">
-    <div class="title">Registration</div>
+    <div class="title">Your Profile</div>
     <div class="content">
       <form action="#">
         <div class="user-details">
           <div class="input-box">
             <span class="details">First Name</span>
-            <input type="text" placeholder="Enter your name" required>
+            <input type="text" placeholder="Enter your name" required disabled>
           </div>
           <div class="input-box">
             <span class="details">Last Name</span>
-            <input type="text" placeholder="Enter your username" required>
+            <input type="text" placeholder="Enter your username" required disabled>
           </div>
           <div class="input-box">
             <div class="gender-details">
@@ -59,15 +59,15 @@
           </div>
           <div class="input-box">
             <span class="details">Date of Birth</span>
-            <input type="date" placeholder="Enter your date of birth" required>
+            <input type="date" placeholder="Enter your date of birth" required disabled>
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
-            <input type="text" inputmode="numeric" maxlength="10" placeholder="Enter your number" required>
+            <input type="text" inputmode="numeric" maxlength="10" placeholder="Enter your number" required disabled>
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="email" placeholder="Enter your email" required>
+            <input type="email" placeholder="Enter your email" required disabled>
           </div>
            <div class="input-box">
             <span class="details">PIN</span>
@@ -75,7 +75,7 @@
           </div>
           <div class="input-box">
             <span class="details">Confirm PIN</span>
-            <input type="password" inputmode="numeric" maxlength="6" placeholder="******" required>
+            <input type="password" inputmode="numeric" maxlength="6" placeholder="******" required >
           </div>
 
               <div class="input-box">
@@ -99,7 +99,7 @@
         </div>
         
         <div class="button">
-          <input type="submit" value="Register">
+          <input type="submit" value="Update Profile">
         </div>
       </form>
     </div>

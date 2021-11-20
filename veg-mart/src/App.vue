@@ -9,7 +9,7 @@
 export default {
   mounted(){
     /*window.localStorage.setItem('vgUser','9106942548')*/
-    ('/profile')
+    this.$router.push('/login')
     }
 }
 </script>

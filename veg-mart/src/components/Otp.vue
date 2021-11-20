@@ -53,18 +53,17 @@
                 
                 <input type="text" placeholder="Enter your mobile number" required>
               </div>
-              <div class="button input-box">
-                <input type="submit" value="Send OTP">
-              </div>
+              
               <div class="input-box">
                 
-                <input type="password" placeholder="Enter your OTP" required>
+                <input type="password" placeholder="Enter your 6 digit PIN" required>
               </div>
               
               <div class="button input-box">
-                <input type="submit" value="Verify OTP">
+                <input type="submit" value="Login">
               </div>
-              
+            </div>
+            <div class="text sign-up-text">Don't have an account?<router-link to="/register"><label>Regsiter Now</label></router-link>
             </div>
         </form>
       </div>
