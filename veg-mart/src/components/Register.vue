@@ -8,15 +8,15 @@
       <!-- header section strats -->
       <header class="header_section">
         <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg custom_nav-container">
-            <a class="navbar-brand" href="index.html">
+          <nav class="navbar navbar-expand-lg custom_nav-container"  style="display: flex; justify-content: space-between;">
+            <a class="navbar-brand">
               <span>
                 VegMart
               </span>
             </a>
-            <div class="" id="">
-                            
-            </div>
+            <div
+                style="background-color:#fff; padding: 5px; border-radius: 3px; color:rgba(4, 207, 65,1); font-weight: bold;">
+                <label @click="$router.push('/login')">Login</label></div>
           </nav>
         </div>
       </header>
