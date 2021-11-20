@@ -8,8 +8,8 @@
 <script>
 export default {
   mounted(){
-    /*window.localStorage.setItem('vgUser','9106942548')*/
-    this.$router.push('/login')
+    window.localStorage.setItem('vgUser','9106942548')
+    this.$router.push('/register')
     }
 }
 </script>
@@ -33,5 +33,14 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+input[type="text"]:disabled {
+  background: #fff;
+}
+input[type="date"]:disabled {
+  background: #fff;
+}
+input[type="email"]:disabled {
+  background: #fff;
 }
 </style>

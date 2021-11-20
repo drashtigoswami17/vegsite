@@ -40,8 +40,8 @@
           </div>
           <div class="input-box">
             <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1">
-          <input type="radio" name="gender" id="dot-2">
+          <input type="radio" disabled name="gender" id="dot-1">
+          <input type="radio" disabled name="gender" id="dot-2">
           <div style="display:flex; justify-content: space-around;">
           <span class="gender-title">Gender</span>
           </div>
