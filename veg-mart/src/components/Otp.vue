@@ -63,8 +63,7 @@
                 <input type="submit" value="Login">
               </div>
             </div>
-            <div class="text sign-up-text">Don't have an account?<router-link to="/register"><label>Regsiter Now</label></router-link>
-            </div>
+           
         </form>
       </div>
         
@@ -75,45 +74,8 @@
 </template>
 
 <script>
-  import firebase from 'firebase/compat';
 
-import 'firebase/compat/firestore'
-export default {
-  mounted(){
- firebase.initializeApp( {
-  apiKey: "AIzaSyDn7efC-m69rn1jevcOIRw6-cIJITcacak",
-  authDomain: "vegmart-c4605.firebaseapp.com",
-  databaseURL: "https://vegmart-c4605-default-rtdb.firebaseio.com",
-  projectId: "vegmart-c4605",
-  storageBucket: "vegmart-c4605.appspot.com",
-  messagingSenderId: "402249625272",
-  appId: "1:402249625272:web:1dd85811f72e821e484e4d"
-});
 
-firebase.auth().useDeviceLanguage();
-window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-  'size': 'invisible',
-  'callback': (response) => {
-   console.log(response);
-  }
-})
-const appVerifier = window.recaptchaVerifier;
-
-firebase.auth().signInWithPhoneNumber('+917490972908', appVerifier)
-    .then((confirmationResult) => {
-      alert(confirmationResult)
-      // SMS sent. Prompt user to type the code from the message, then sign the
-      // user in with confirmationResult.confirm(code).
-      window.confirmationResult = confirmationResult;
-      // ...
-    }).catch((error) => {
-      console.log(error);
-      // Error; SMS not sent
-      // ...
-    });
-
-},
-}
 </script>
 
 <style scoped>
