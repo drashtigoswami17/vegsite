@@ -8,14 +8,11 @@
 <script>
 export default {
   mounted(){
-<<<<<<< HEAD
-    /*window.localStorage.setItem('vgUser','9106942548')*/
-    this.$router.push('/login')
-=======
+
     window.localStorage.setItem('vgUser','9106942548')
     // var user = window.localStorage.getItem('vgUser')
     // this.$router.push('/register')
->>>>>>> 3031838f7c69a19b361ec60756115d3fa971979e
+
     }
 }
 </script>
