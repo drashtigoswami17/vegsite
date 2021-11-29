@@ -9,7 +9,8 @@
 export default {
   mounted(){
     window.localStorage.setItem('vgUser','9106942548')
-    this.$router.push('/register')
+    // var user = window.localStorage.getItem('vgUser')
+    // this.$router.push('/register')
     }
 }
 </script>
