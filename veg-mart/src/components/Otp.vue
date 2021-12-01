@@ -4,22 +4,31 @@
       <div class="hero_bg_box">
         <img src="../assets/images/backimg.jpg" alt="">
       </div>
-      <!-- header section strats -->
-      <header class="header_section">
-        <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg custom_nav-container">
-            <a class="navbar-brand" href="index.html">
-              <span>
-                VegMart
-              </span>
-            </a>
-            <div class="" id="">
-                            
-            </div>
-          </nav>
-        </div>
-      </header>
-      <!-- end header section -->
+     <!-- header section strats -->
+        <header class="header_section">
+          <div class="container-fluid">
+            <nav
+              class="navbar navbar-expand-lg custom_nav-container"
+              style="display: flex; justify-content: space-between"
+            >
+              <a class="navbar-brand">
+                <span> VegMart </span>
+              </a>
+              <div
+                style="
+                  background-color: #fff;
+                  padding: 5px;
+                  border-radius: 3px;
+                  color: rgba(4, 207, 65, 1);
+                  font-weight: bold;
+                "
+              >
+                <label @click="$router.push('/register')">Register</label>
+              </div>
+            </nav>
+          </div>
+        </header>
+        <!-- end header section -->
     </div>
 </div>  
   <div style="display:flex; justify-content: space-around; margin: 4%;">

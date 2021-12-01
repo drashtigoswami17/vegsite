@@ -5,24 +5,7 @@
       <div class="hero_bg_box">
         <img src="../assets/images/backimg.jpg" alt="">
       </div>
-      <!-- header section strats -->
-      <header class="header_section">
-        <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg custom_nav-container">
-            <a class="navbar-brand" href="index.html">
-              <span>
-                VegMart
-              </span>
-            </a>
-            <div class="" id="">
-                            
-            </div>
-          </nav>
-    <div class="sub_page">
-      <div class="hero_area">
-        <div class="hero_bg_box">
-          <img src="../assets/images/backimg.jpg" alt="" />
-        </div>
+     
         <!-- header section strats -->
         <header class="header_section">
           <div class="container-fluid">
