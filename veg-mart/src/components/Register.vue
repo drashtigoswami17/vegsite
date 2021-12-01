@@ -1,6 +1,5 @@
 <template>
   <div>
-<<<<<<< HEAD
       <div class="sub_page">
     <div class="hero_area">
       <div class="hero_bg_box">
@@ -19,12 +18,10 @@
                             
             </div>
           </nav>
-=======
     <div class="sub_page">
       <div class="hero_area">
         <div class="hero_bg_box">
           <img src="../assets/images/backimg.jpg" alt="" />
->>>>>>> 3031838f7c69a19b361ec60756115d3fa971979e
         </div>
         <!-- header section strats -->
         <header class="header_section">
