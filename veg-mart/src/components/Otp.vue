@@ -60,12 +60,12 @@
             <div class="input-boxes">
               <div class="input-box">
                 
-                <input type="text" v-model="mobile" placeholder="Enter your mobile number" required>
+                <input type="text"  inputmode="numeric" maxlength="10" v-model="mobile" placeholder="Enter your mobile number" required>
               </div>
               
               <div class="input-box">
                 
-                <input type="password"  v-model="pin" placeholder="Enter your 6 digit PIN" required>
+                <input type="password" inputmode="numeric" maxlength="6" v-model="pin" placeholder="Enter your 6 digit PIN"   required>
               </div>
               
               <div class="button input-box">

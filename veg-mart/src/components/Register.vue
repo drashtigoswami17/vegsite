@@ -154,10 +154,13 @@ export default {
       pin:'',
       cpin:'',
       email:'',
+      
+
       mobile:'',
       gender:'',
       AddLine:'',
-      dob:''
+      dob:'',
+      err:[],
     };
   },
   mounted() {
@@ -170,6 +173,7 @@ export default {
       messagingSenderId: "402249625272",
       appId: "1:402249625272:web:1dd85811f72e821e484e4d",
     });
+    
   },
   methods: {
     register() {
@@ -188,6 +192,7 @@ export default {
           mob: this.mobile,
           email: this.email,
           dob:this.dob,
+          
           gender: this.gender,
           type: "customer",
           pin:this.pin,
@@ -200,6 +205,22 @@ export default {
         }).then(()=>{
           this.$router.replace('/login')
         });
+        this.err = [];
+
+      if (this.firstName==null) {
+        this.err.push("Name required.");
+      }
+      if (this.email==null) {
+        this.err.push('Email required.');
+      } else if (!this.validEmail(this.email)) {
+        this.err.push('Valid email required.');
+      }
+      
+    },
+    validEmail(email)
+    {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
     },
   },
 };
