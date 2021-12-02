@@ -149,13 +149,11 @@ import "firebase/compat/firestore";
 export default {
   data() {
     return {
-      firstName: "",
+      firstName: '',
       lastName:'',
       pin:'',
       cpin:'',
       email:'',
-      
-
       mobile:'',
       gender:'',
       AddLine:'',
@@ -178,9 +176,39 @@ export default {
   methods: {
     register() {
       
-      console.log('done');
+       if (this.firstName === '') {
+        this.err.push("First Name required.");
+      }
+      if(this.lastName === '')
+      {
+        this.err.push("Last Name Required");
+      }
+      if(this.pin === '')
+      {
+        this.err.push("Plz Enter pin");
+      }
+      if(this.dob === '')
+      {
+        this.err.push("enter dob");
+      }
+      if(this.gender === '')
+      {
+        this.err.push("select gender");
+      }
+      if(this.AddLine === '')
+      {
+        this.err.push("Enter Address");
+      }
+      if(this.mobile=== '')
+      {
+        this.err.push("enter mobile number");
+      }
+      if (this.email === '') {
+        this.err.push('Email required.');
+      }  else if (!this.validEmail(this.email)) {
+        this.errors.push('Valid email required.');}
       
-      
+      if(this.err.length === 0){
       firebase
         .firestore()
         .collection("user")
@@ -205,16 +233,12 @@ export default {
         }).then(()=>{
           this.$router.replace('/login')
         });
-        this.err = [];
+      }
+      else{
+       alert(this.err) 
+      }
 
-      if (this.firstName==null) {
-        this.err.push("Name required.");
-      }
-      if (this.email==null) {
-        this.err.push('Email required.');
-      } else if (!this.validEmail(this.email)) {
-        this.err.push('Valid email required.');
-      }
+     
       
     },
     validEmail(email)
