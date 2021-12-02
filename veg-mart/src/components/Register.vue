@@ -38,20 +38,20 @@
       <div class="container">
         <div class="title">Registration</div>
         <div class="content">
-          <form action="#">
+          <form>
             <div class="user-details">
               <div class="input-box">
                 <span class="details">First Name</span>
-                <input type="text" placeholder="Enter your name" required />
+                <input type="text" v-model="firstName" placeholder="Enter your firstname" required />
               </div>
               <div class="input-box">
                 <span class="details">Last Name</span>
-                <input type="text" placeholder="Enter your username" required />
+                <input type="text" v-model="lastName" placeholder="Enter your lastname" required />
               </div>
               <div class="input-box">
                 <div class="gender-details">
-                  <input type="radio" name="gender" id="dot-1" />
-                  <input type="radio" name="gender" id="dot-2" />
+                  <input type="radio" v-model="gender" value="male" name="gender" id="dot-1" />
+                  <input type="radio" v-model="gender" value="female" name="gender" id="dot-2" />
                   <div style="display: flex; justify-content: space-around">
                     <span class="gender-title">Gender</span>
                   </div>
@@ -70,7 +70,7 @@
               <div class="input-box">
                 <span class="details">Date of Birth</span>
                 <input
-                  type="date"
+                  type="date" v-model="dob"
                   placeholder="Enter your date of birth"
                   required
                 />
@@ -81,13 +81,14 @@
                   type="text"
                   inputmode="numeric"
                   maxlength="10"
+                  v-model="mobile"
                   placeholder="Enter your number"
                   required
                 />
               </div>
               <div class="input-box">
                 <span class="details">Email</span>
-                <input type="email" placeholder="Enter your email" required />
+                <input type="email" v-model="email" placeholder="Enter your email" required />
               </div>
               <div class="input-box">
                 <span class="details">PIN</span>
@@ -95,6 +96,7 @@
                   type="password"
                   inputmode="numeric"
                   maxlength="6"
+                  v-model="pin"
                   placeholder="******"
                   required
                 />
@@ -106,13 +108,14 @@
                   inputmode="numeric"
                   maxlength="6"
                   placeholder="******"
+                  v-model="cpin"
                   required
                 />
               </div>
 
-              <div class="input-box">
+              <div class="input-box" >
                 <span class="details">Address</span>
-                <textarea placeholder="Enter your Address" required></textarea>
+                <textarea  placeholder="Enter your Address" v-model="AddLine" required></textarea>
               </div>
 
               <div class="input-box">
@@ -130,7 +133,7 @@
             </div>
 
             <div class="button">
-              <input type="submit" @click="register()" value="Register" />
+              <input type="button" @click="register()" value="Register" />
             </div>
           </form>
         </div>
@@ -147,8 +150,14 @@ export default {
   data() {
     return {
       firstName: "",
+      lastName:'',
       pin:'',
       cpin:'',
+      email:'',
+      mobile:'',
+      gender:'',
+      AddLine:'',
+      dob:''
     };
   },
   mounted() {
@@ -165,8 +174,8 @@ export default {
   methods: {
     register() {
       
-
-
+      console.log('done');
+      
       
       firebase
         .firestore()
@@ -178,6 +187,7 @@ export default {
           cart: {},
           mob: this.mobile,
           email: this.email,
+          dob:this.dob,
           gender: this.gender,
           type: "customer",
           pin:this.pin,
@@ -187,6 +197,8 @@ export default {
             pin: "370001",
             state: "Gujarat",
           },
+        }).then(()=>{
+          this.$router.replace('/login')
         });
     },
   },

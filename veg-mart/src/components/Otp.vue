@@ -60,16 +60,16 @@
             <div class="input-boxes">
               <div class="input-box">
                 
-                <input type="text" placeholder="Enter your mobile number" required>
+                <input type="text" v-model="mobile" placeholder="Enter your mobile number" required>
               </div>
               
               <div class="input-box">
                 
-                <input type="password" placeholder="Enter your 6 digit PIN" required>
+                <input type="password"  v-model="pin" placeholder="Enter your 6 digit PIN" required>
               </div>
               
               <div class="button input-box">
-                <input type="submit" value="Login">
+                <input type="button" @click="login()" value="Login">
               </div>
             </div>
            
@@ -83,7 +83,31 @@
 </template>
 
 <script>
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
+export default {
+  data(){
+    return{
+      mobile:'',
+      pin:''
+    }
+  },
+  methods:{
+    async login(){
+      const user = await  firebase.firestore()
+        .collection("user").where('mob','==',this.mobile).where('pin','==',this.pin).get();
+
+        if(user.empty){
+          alert("Invalid Credentials")
+        }
+        else{
+          window.localStorage.setItem('vgUser',this.mobile);
+          this.$router.replace('/')
+        }
+    }
+  }
+}
 
 </script>
 
