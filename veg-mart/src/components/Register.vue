@@ -42,11 +42,11 @@
             <div class="user-details">
               <div class="input-box">
                 <span class="details">First Name</span>
-                <input type="text" v-model="firstName" placeholder="Enter your firstname" required />
+                <input type="text" v-model="firstName" v-on:keypress="isLetter($event)"  placeholder="Enter your firstname" required />
               </div>
               <div class="input-box">
                 <span class="details">Last Name</span>
-                <input type="text" v-model="lastName" placeholder="Enter your lastname" required />
+                <input type="text" v-model="lastName" v-on:keypress="isLetter($event)" placeholder="Enter your lastname" required />
               </div>
               <div class="input-box">
                 <div class="gender-details">
@@ -78,25 +78,28 @@
               <div class="input-box">
                 <span class="details">Phone Number</span>
                 <input
+                  v-on:keypress="NumbersOnly"
                   type="text"
                   inputmode="numeric"
                   maxlength="10"
-                  v-model="mobile"
+                  v-model.number="mobile"
                   placeholder="Enter your number"
+                  
                   required
                 />
               </div>
               <div class="input-box">
                 <span class="details">Email</span>
-                <input type="email" v-model="email" placeholder="Enter your email" required />
+                <input type="email" v-model="email" placeholder="Enter your email"  required />
               </div>
               <div class="input-box">
                 <span class="details">PIN</span>
                 <input
+                   v-on:keypress="NumbersOnly"
                   type="password"
                   inputmode="numeric"
                   maxlength="6"
-                  v-model="pin"
+                  v-model.number="pin"
                   placeholder="******"
                   required
                 />
@@ -104,11 +107,12 @@
               <div class="input-box">
                 <span class="details">Confirm PIN</span>
                 <input
+                   v-on:keypress="NumbersOnly"
                   type="password"
                   inputmode="numeric"
                   maxlength="6"
                   placeholder="******"
-                  v-model="cpin"
+                  v-model.number="cpin"
                   required
                 />
               </div>
@@ -192,7 +196,7 @@ export default {
         this.err.push("enter dob");
       }
       if(this.gender === '')
-      {
+      { 
         this.err.push("select gender");
       }
       if(this.AddLine === '')
@@ -202,6 +206,10 @@ export default {
       if(this.mobile=== '')
       {
         this.err.push("enter mobile number");
+      }
+       if(this.pin !== this.cpin)
+      {
+        this.err.push("PIN and conform PIN should be same");
       }
       if (this.email === '') {
         this.err.push('Email required.');
@@ -246,6 +254,20 @@ export default {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
+    NumbersOnly(evt) {
+      evt = (evt) ? evt : window.event;
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
+        evt.preventDefault();
+      } else {
+        return true;
+      }
+    },
+    isLetter(e) {
+  let char = String.fromCharCode(e.keyCode); // Get the character
+  if(/^[A-Za-z]+$/.test(char)) return true; // Match with regex 
+  else e.preventDefault(); // If not match, don't add to input text
+},
   },
 };
 </script>
