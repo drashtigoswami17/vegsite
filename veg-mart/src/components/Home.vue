@@ -16,60 +16,67 @@
                 <div class="mr-auto flex-column flex-lg-row align-items-center">
                   <ul class="navbar-nav justify-content-between">
                     <div class="User_option">
-                      <li class="">
-                        <router-link to="/login">
-                          <a class="" href="">
+                      <li v-if="!isLog" class="">
+                        
+                          <a class="" href="/login">
                             <i
                               style="font-size: 20px"
                               class="fa fa-user"
                               onClick=""
                               aria-hidden="true"
+                              
                             ></i>
                           </a>
-                        </router-link>
+                        
                       </li>
+
+                      <li v-if="isLog" class="">
+                        
+                          <a class="" href="/profile">
+                            <i
+                              style="font-size: 20px"
+                              class="fa fa-user"
+                              onClick=""
+                              aria-hidden="true"
+                              
+                            ></i>
+                          </a>
+                        
+                      </li>
+
                       <li class="">
-                        <router-link to="/cart">
-                          <a class="" href="">
+                          <a class="" href="/cart">
                             &nbsp; &nbsp; &nbsp; &nbsp;<i
                               style="font-size: 20px"
                               class="fa fa-shopping-cart"
                               aria-hidden="true"
                             ></i>
                           </a>
-                        </router-link>
                       </li>
                       <li class="">
-                        <router-link to="/sign">
-                          <a class="" href="">
+                          <a class="" href="/sign">
                             &nbsp; &nbsp; &nbsp; &nbsp;<i
                               style="font-size: 20px"
                               class="fa fa-heart"
                               aria-hidden="true"
                             ></i>
                           </a>
-                        </router-link>
                       </li>
                       <li class="">
-                        <router-link to="/sign">
-                          <a class="" href="">
-                            <router-link to="/register">
+                          <a class="" href="/login">
                               &nbsp; &nbsp; &nbsp; &nbsp;<i
                                 style="font-size: 20px"
-                                class="fa fa-registered"
+                                class="fa fa-power-off"
                                 aria-hidden="true"
                               ></i>
-                            </router-link>
                           </a>
-                        </router-link>
                       </li>
                       <div class="header">
                         <div class="header-right">
                           <a class="active" href="#fruit">Fruits</a>
-                          &nbsp; &nbsp;&nbsp; &nbsp;<a href="#veg"
-                            >Vegitables</a
-                          >
-                          &nbsp; &nbsp;<a href="#contact">Contact Us</a>
+                          &nbsp; &nbsp;&nbsp; &nbsp;<a href="#veg">Vegitables</a>
+                          &nbsp; &nbsp;<a href="#contact">Contact Us</a> 
+                          &nbsp; <a href="/order">Your Orders </a>
                         </div>
                       </div>
                     </div>
@@ -313,6 +320,9 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 export default {
   mounted() {
+    if(window.localStorage.getItem('vgUser')){
+      this.isLog=true
+    }
     firebase.initializeApp({
       apiKey: "AIzaSyDn7efC-m69rn1jevcOIRw6-cIJITcacak",
       authDomain: "vegmart-c4605.firebaseapp.com",
@@ -322,10 +332,12 @@ export default {
       messagingSenderId: "402249625272",
       appId: "1:402249625272:web:1dd85811f72e821e484e4d",
     });
+
+    
     firebase
       .firestore()
       .collection("user")
-      .doc("9106942548")
+      .doc(window.localStorage.getItem('vgUser'))
       .get()
       .then((d) => {
         this.cart = d.data().cart;
@@ -335,6 +347,7 @@ export default {
   },
   data() {
     return {
+      isLog:false,
       veg: {},
       fruit: {},
       wish: [],
@@ -382,6 +395,7 @@ export default {
           d.forEach((doc) => {
             if (doc.data().stock !== "0") {
               this.veg[doc.id] = doc.data();
+              window.localStorage.setItem(doc.id,doc.data().name)
             }
           });
         });
@@ -394,6 +408,7 @@ export default {
           d.forEach((doc) => {
             if (doc.data().stock !== "0") {
               this.fruit[doc.id] = doc.data();
+               window.localStorage.setItem(doc.id,doc.data().name)
             }
           });
         });

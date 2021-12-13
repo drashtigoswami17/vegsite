@@ -8,10 +8,10 @@
 <script>
 export default {
   mounted(){
-
-    
-    // var user = window.localStorage.getItem('vgUser')
-    // this.$router.push('/register')
+      const user = window.localStorage.getItem('vgUser');
+      if(user===null){
+        this.$router.push('/login')
+      }
 
     }
 }

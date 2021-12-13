@@ -25,7 +25,7 @@
                   font-weight: bold;
                 "
               >
-                <label @click="$router.push('/login')">Login</label>
+                <label @click="logout()">Logout</label>
               </div>
             </nav>
           </div>
@@ -42,16 +42,16 @@
             <div class="user-details">
               <div class="input-box">
                 <span class="details">First Name</span>
-                <input type="text" v-model="firstName" placeholder="Enter your firstname" required />
+                <input type="text" v-model="firstName"  placeholder="Enter your firstname"  disabled/>
               </div>
               <div class="input-box">
                 <span class="details">Last Name</span>
-                <input type="text" v-model="lastName" placeholder="Enter your lastname" required />
+                <input type="text" v-model="lastName"  placeholder="Enter your lastname" disabled />
               </div>
               <div class="input-box">
                 <div class="gender-details">
-                  <input type="radio" v-model="gender" value="male" name="gender" id="dot-1" />
-                  <input type="radio" v-model="gender" value="female" name="gender" id="dot-2" />
+                  <input type="radio" v-model="gender" value="male" name="gender" id="dot-1" disabled />
+                  <input type="radio" v-model="gender" value="female" name="gender" id="dot-2" disabled />
                   <div style="display: flex; justify-content: space-around">
                     <span class="gender-title">Gender</span>
                   </div>
@@ -72,31 +72,35 @@
                 <input
                   type="date" v-model="dob"
                   placeholder="Enter your date of birth"
-                  required
+                  required disabled
                 />
               </div>
               <div class="input-box">
                 <span class="details">Phone Number</span>
                 <input
+                  
                   type="text"
                   inputmode="numeric"
                   maxlength="10"
-                  v-model="mobile"
+                  disabled
+                  v-model.number="mobile"
                   placeholder="Enter your number"
+                  
                   required
                 />
               </div>
               <div class="input-box">
                 <span class="details">Email</span>
-                <input type="email" v-model="email" placeholder="Enter your email" required />
+                <input type="email" v-model="email" placeholder="Enter your email"   disabled />
               </div>
               <div class="input-box">
                 <span class="details">PIN</span>
                 <input
+                   
                   type="password"
                   inputmode="numeric"
                   maxlength="6"
-                  v-model="pin"
+                  v-model.number="pin"
                   placeholder="******"
                   required
                 />
@@ -104,18 +108,19 @@
               <div class="input-box">
                 <span class="details">Confirm PIN</span>
                 <input
+                  
                   type="password"
                   inputmode="numeric"
                   maxlength="6"
                   placeholder="******"
-                  v-model="cpin"
+                  v-model.number="cpin"
                   required
                 />
               </div>
 
               <div class="input-box" >
                 <span class="details">Address</span>
-                <textarea  placeholder="Enter your Address" v-model="AddLine" required></textarea>
+                <textarea  placeholder="Enter your Address" v-model="AddLine" ></textarea>
               </div>
 
               <div class="input-box">
@@ -133,12 +138,13 @@
             </div>
 
             <div class="button">
-              <input type="button" @click="register()" value="Register" />
+              <input type="button" @click="update()" value="Update" />
             </div>
           </form>
         </div>
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -149,18 +155,18 @@ import "firebase/compat/firestore";
 export default {
   data() {
     return {
-      firstName: "",
+      data:'',
+      firstName: '',
       lastName:'',
       pin:'',
       cpin:'',
       email:'',
-      
-
       mobile:'',
       gender:'',
       AddLine:'',
       dob:'',
       err:[],
+      
     };
   },
   mounted() {
@@ -173,20 +179,52 @@ export default {
       messagingSenderId: "402249625272",
       appId: "1:402249625272:web:1dd85811f72e821e484e4d",
     });
-    
+    this.getprofile()
   },
-  methods: {
-    register() {
+  methods:{
+    logout(){
+      window.localStorage.clear();
+                this.$router.push('/login')
+    },
+    update() {
+        this.err=[];
+       if (this.firstName === '') {
+        this.err.push("First Name required.");
+      }
+      if(this.lastName === '')
+      {
+        this.err.push("Last Name Required");
+      }
+     
+      if(this.dob === '')
+      {
+        this.err.push("enter dob");
+      }
+      if(this.gender === '')
+      { 
+        this.err.push("select gender");
+      }
+      if(this.AddLine === '')
+      {
+        this.err.push("Enter Address");
+      }
+      if(this.mobile=== '')
+      {
+        this.err.push("enter mobile number");
+      }
       
-      console.log('done');
+      if (this.email === '') {
+        this.err.push('Email required.');
+      }  else if (!this.validEmail(this.email)) {
+        this.errors.push('Valid email required.');}
       
-      
+      if(this.err.length === 0){
       firebase
         .firestore()
         .collection("user")
         .doc(this.mobile)
-        .get({
-          name: this.firstName + " " + this.lastName,
+        .update({
+          name: this.firstName+" "+this.lastName,
           wishlist: [],
           cart: {},
           mob: this.mobile,
@@ -203,18 +241,14 @@ export default {
             state: "Gujarat",
           },
         }).then(()=>{
-          this.$router.replace('/login')
+          this.$router.replace('/')
         });
-        this.err = [];
+      }
+      else{
+       alert(this.err) 
+      }
 
-      if (this.firstName==null) {
-        this.err.push("Name required.");
-      }
-      if (this.email==null) {
-        this.err.push('Email required.');
-      } else if (!this.validEmail(this.email)) {
-        this.err.push('Valid email required.');
-      }
+     
       
     },
     validEmail(email)
@@ -222,8 +256,31 @@ export default {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
-  },
+    
+  getprofile()
+  {
+  
+    
+    firebase
+        .firestore()
+        .collection("user")
+        .doc(window.localStorage.getItem('vgUser'))
+        .get()
+        .then((d)=>{
+          this.data=d.data();
+          this.email=this.data.email
+          this.mobile=this.data.mob
+          this.gender=this.data.gender
+          this.dob=this.data.dob
+          this.AddLine=this.data.add.addressLine
+          this.firstName=this.data.name.split(' ')[0]
+          this.lastName=this.data.name.split(' ')[1]
+
+        });
+  }
+  }
 };
+ 
 </script>
 
 <style scoped>

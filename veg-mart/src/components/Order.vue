@@ -54,28 +54,16 @@
     <div style="display: flex; justify-content: space-around; margin: 5%">
       <div class="CartContainer">
         <div class="Header">
-          <h3 class="Heading">Your Wishlist</h3>
-          <h5 class="Action" @click="remove(null, 'all')">Remove all</h5>
+          <h3 class="Heading">Your Order</h3>
         </div>
 
-        <div class="Cart-Items" v-for="(p, k) in prod" :key="k">
-          <div class="image-box">
-            <img v-bind:src="getImgUrl(p.img)" :alt="p.img" height="120" />
-          </div>
-          <div class="about">
-            <h5 class="title">{{ p.name }}</h5>
-            <br />
-          </div>
-          <div class="counter"></div>
-          <div class="prices">
-            <i
-              style="font-size: 20px"
-              @click="addToCart(k, '1', 'add')"
-              class="fa fa-shopping-cart"
-              aria-hidden="true"
-            ></i>
-            <div class="remove"><u @click="remove(k, '')">Remove</u></div>
-          </div>
+        <div class="Cart-Items" v-for="p, k in order" :key="k">
+            <b>{{k}}</b>
+            <p>
+                <span v-for="i,id in p.item" :key="id">{{getName(id)}}, </span>
+            </p>
+            <b>{{p.price}}</b>
+          
         </div>
       </div>
     </div>
@@ -89,71 +77,8 @@ import "firebase/compat/firestore";
 export default {
   data() {
     return {
-      prod: {},
-      wish: [],
-      cart: {},
+     order:{}
     };
-  },
-  methods: {
-
-    addToCart(proID,qty,mode){
-      if(mode==="add"){
-        if(!this.cart[proID]){
-        this.cart[proID]=qty;}
-      }
-      firebase
-        .firestore()
-        .collection("user")
-        .doc(window.localStorage.getItem("vgUser"))
-        .update({
-          cart: this.cart
-        });
-    },
-    getImgUrl(img) {
-      return require("../assets/images/" + img);
-    },
-    remove(id, mode) {
-      if (mode === "all") {
-        this.wish = [];
-      } else {
-        const index = this.wish.indexOf(id);
-        if (index > -1) {
-          this.wish.splice(index, 1);
-        }
-      }
-      firebase
-        .firestore()
-        .collection("user")
-        .doc(window.localStorage.getItem("vgUser"))
-        .update({
-          wishlist: this.wish,
-        })
-        .then(() => {
-          this.getWish();
-          location.reload();
-        });
-    },
-    getWish() {
-      firebase
-        .firestore()
-        .collection("user")
-        .doc(window.localStorage.getItem("vgUser"))
-        .get()
-        .then((d) => {
-          this.wish = d.data().wishlist;
-          this.cart = d.data().cart;
-          this.wish.forEach((i) => {
-            firebase
-              .firestore()
-              .collection("product")
-              .doc(i)
-              .get()
-              .then((d) => {
-                this.prod[i] = d.data();
-              });
-          });
-        });
-    },
   },
   mounted() {
     firebase.initializeApp({
@@ -165,8 +90,26 @@ export default {
       messagingSenderId: "402249625272",
       appId: "1:402249625272:web:1dd85811f72e821e484e4d",
     });
-    this.getWish();
+    
+    firebase
+        .firestore()
+        .collection("order")
+        .where('user','==',window.localStorage.getItem("vgUser"))
+        .get()
+        .then((d) => {
+          d.forEach((doc)=>{
+              alert(doc.id)
+              this.order[doc.id]=doc.data()
+          })
+        });
+
   },
+  methods:{
+      getName(id)
+      {
+          return window.localStorage.getItem(id)
+      }
+  }
 };
 </script>
 

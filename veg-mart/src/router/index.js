@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../components/Home.vue'
 import Cart from '../components/Cart.vue'
-
+import Order from '../components/Order.vue'
 import Otp from '../components/Otp.vue'
 import Register from '../components/Register.vue'
 import Sign from '../components/Sign.vue'
@@ -37,6 +37,11 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: Order
   },
  
 ]

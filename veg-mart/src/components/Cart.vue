@@ -20,7 +20,8 @@
                     <ul class="navbar-nav justify-content-between">
                       <div class="User_option">
                         <li class="">
-                          <a class="" href="">
+                        
+                          <a class="" href="/">
                             <i
                               style="font-size: 20px"
                               class="fa fa-home"
@@ -28,6 +29,7 @@
                               aria-hidden="true"
                             ></i>
                           </a>
+                          
                         </li>
                         <form class="form-inline">
                           <button class="btn nav_search-btn" type="submit">
