@@ -83,7 +83,7 @@
                   inputmode="numeric"
                   maxlength="10"
                   disabled
-                  v-model.number="mobile"
+                  v-model="mobile"
                   placeholder="Enter your number"
                   
                   required
