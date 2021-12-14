@@ -56,15 +56,24 @@
         <div class="Header">
           <h3 class="Heading">Your Order</h3>
         </div>
-
-        <div class="Cart-Items" v-for="p, k in order" :key="k">
-            <b>{{k}}</b>
-            <p>
+        <table style="width:100%">
+          <tr style="margin:3px">
+            <th>Sr.no</th>
+            <th>Order Id</th>
+            <th>Product List</th>
+            <th>Order Price</th>
+          </tr>
+        <tr style="margin:5px" v-for="p, k ,index in order" :key="k">
+        
+            <td>{{index+1}}</td>
+            <td>{{k}}</td>
+            <td>
                 <span v-for="i,id in p.item" :key="id">{{getName(id)}}, </span>
-            </p>
-            <b>{{p.price}}</b>
+            </td>
+            <td>{{p.price}}</td>
           
-        </div>
+        </tr>
+        </table>
       </div>
     </div>
   </div>
@@ -98,7 +107,6 @@ export default {
         .get()
         .then((d) => {
           d.forEach((doc)=>{
-              alert(doc.id)
               this.order[doc.id]=doc.data()
           })
         });
